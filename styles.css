@@ -1,0 +1,983 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: orange;
+}
+.logo span {
+    color: rgb(14, 14, 139);
+}
+
+/* Navigation Menu (Centered) */
+.nav-container {
+    flex: 1; /* Takes available space */
+    display: flex;
+    justify-content: center; /* Centers the nav */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: rgb(245, 143, 10);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+}
+
+.nav-links a:hover {
+    background-color: rgb(14, 14, 139);
+    border-radius: 5px;
+    color: white;
+}
+
+/* Download CV Button */
+.btn-container {
+    text-align: right;
+}
+
+.btn {
+    background-color: orange;
+    color: rgb(28, 60, 241);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Mobile Styles */
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    /* Hide Desktop Navigation */
+    .nav-container {
+        display: none;
+    }
+    
+    .nav-links {
+        display: none; /* Hide menu */
+    }
+
+    /* Dynamic Mobile Icons */
+    .mobile-icons {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 15px;
+        z-index: 999;
+    }
+
+    .mobile-icons a {
+        font-size: 1.8rem;
+        color: rgb(161, 161, 161);
+        transition: color 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .mobile-icons a:hover {
+        color: orange;
+    }
+}
+
+
+/* Hide Mobile Icons on Desktop */
+@media screen and (min-width: 769px) {
+    .mobile-icons {
+        display: none;
+    }
+}
+/* Hero Section */
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 60px 20px;
+    background: url('space-soldier-ai-wallpaper-4k.png') center/cover no-repeat;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    max-width: 1000px;
+    margin: 80px auto 0; /* Added margin-top for spacing */
+    overflow: hidden;
+}
+
+
+/* Overlay for better readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Hero Content */
+.hero-content {
+    max-width: 500px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Hero Image */
+.hero-image {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Quiz Button */
+#quiz-btn {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#quiz-btn:hover {
+    background: #ffb74d;
+}
+
+/* Popup Styling */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+}
+
+.popup img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ff3d00;
+}
+
+.popup .close:hover {
+    color: #d32f2f;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 40px;
+    margin-top: 80px;
+    background: linear-gradient(135deg, orange, rgb(14, 14, 139));
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Full-Fit Image */
+.about-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Name Below Image */
+.name-title {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* About Content */
+.about-content {
+    flex: 1;
+    color: white;
+    padding-left: 40px;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+    background: linear-gradient(to right, orange, rgb(14, 14, 139));
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Skill List */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.skills-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.skills-list i {
+    color: white;
+    background-color: rgb(14, 14, 139);
+    padding: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* LinkedIn Button */
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    color: rgb(14, 14, 139);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.linkedin-btn i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.linkedin-btn:hover {
+    background-color: orange;
+    color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .about-content {
+        padding: 0;
+    }
+
+    .about-image img {
+        width: 80%;
+        border-radius: 15px;
+    }
+}
+
+/* Education Section */
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, orange, rgb(14, 14, 139));
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    max-width: 900px;
+    margin: 80px auto;
+}
+
+/* Education Content */
+.education-content {
+    color: white;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.8), -2px -2px 5px rgba(14, 14, 139, 0.8);
+    margin-bottom: 25px;
+}
+
+/* Education Card */
+.education-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    max-width: 800px;
+    margin: auto;
+}
+
+.education-card:hover {
+    transform: scale(1.02);
+}
+
+/* University Logo */
+.university-logo {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+/* Education Details */
+.education-details {
+    text-align: left;
+    flex: 1;
+}
+
+.education-details h3 {
+    font-size: 1.8rem;
+    color: rgb(14, 14, 139);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.degree {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: orange;
+}
+
+/* Introduction Text */
+.education-intro {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    line-height: 1.6;
+    color: rgb(60, 60, 60);
+}
+
+/* Course List */
+.course-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.course-list li {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    color: rgb(14, 14, 139);
+}
+
+/* Check Icons */
+.course-list i {
+    color: orange;
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .education {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .education-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .university-logo {
+        margin-bottom: 15px;
+    }
+}
+/* Projects Section */
+.projects {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, orange, rgb(14, 14, 139));
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    margin: 80px auto;
+    max-width: 1100px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.8), -2px -2px 5px rgba(14, 14, 139, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Projects Container */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Project Card */
+.project-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* Project Image */
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Project Content */
+.project-content {
+    padding: 20px;
+    text-align: left;
+}
+
+/* Project Title */
+.project-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #16213e;
+}
+
+/* Project Company & Date */
+.project-company {
+    font-size: 1.2rem;
+    color: orange;
+    font-weight: bold;
+}
+
+.project-date {
+    font-size: 1rem;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+/* Project Intro */
+.project-intro {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Project Features */
+.project-features {
+    list-style: none;
+    padding: 0;
+}
+
+.project-features li {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+    color: #16213e;
+}
+
+/* Check Icons */
+.project-features i {
+    color: orange;
+    font-size: 1.2rem;
+}
+
+/* Details Button */
+.details-button {
+    display: inline-block;
+    background: orange;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.details-button:hover {
+    background: #ff8500;
+}
+
+/* See More Projects Button */
+.see-more-container {
+    margin-top: 30px;
+}
+
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    color: #1a1a2e;
+    padding: 12px 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.github-button i {
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.github-button:hover {
+    background: orange;
+    color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+/* Events Section */
+.events {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, orange, rgb(14, 14, 139));
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    margin: 80px auto;
+    max-width: 1100px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.8), -2px -2px 5px rgba(14, 14, 139, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Events Container */
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Event Card */
+.event-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+/* Event Image */
+.event-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Event Content */
+.event-content {
+    padding: 20px;
+    text-align: left;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #16213e;
+}
+
+/* Event Location */
+.event-location {
+    font-size: 1rem;
+    color: orange;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Event Introduction */
+.event-intro {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* What I Learned */
+.event-content h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #16213e;
+    margin-top: 10px;
+}
+
+/* Event Learnings */
+.event-learnings {
+    list-style: none;
+    padding: 0;
+}
+
+.event-learnings li {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+    color: #16213e;
+}
+
+/* Check Icons */
+.event-learnings i {
+    color: orange;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .events-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+
+
+
+
+
+/* Connect Me Section */
+.connect {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, orange, rgb(14, 14, 139));
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    margin: 80px auto;
+    max-width: 900px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.8), -2px -2px 5px rgba(14, 14, 139, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Container Layout */
+.connect-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.8);
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+/* Contact Buttons */
+.contact-btn {
+    display: block;
+    width: 200px;
+    padding: 12px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.email {
+    background: linear-gradient(135deg, #ff5722, #ff9800);
+    box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.6);
+}
+
+.call {
+    background: linear-gradient(135deg, #00c853, #64dd17);
+    box-shadow: 0px 4px 10px rgba(0, 200, 83, 0.6);
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: white;
+    margin: 0 10px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+    color: orange;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .connect-container {
+        flex-direction: column;
+    }
+}
+
+/* Footer Styling */
+.footer {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 1rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+/* Browser Support - Horizontal Layout */
+.browser-support {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Icons - Styled and Animated */
+.browser-support i {
+    font-size: 1.5rem;
+    color: orange;
+    margin: 0 10px;  /* Adds spacing between icons */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.browser-support i:hover {
+    transform: scale(1.2);
+    color: #ffeb3b;
+}
+
+/* Disclaimer */
+.disclaimer {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #bbbbbb;
+    margin-bottom: 10px;
+}
+
+/* Copyright */
+.copyright {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+/* Apply background to the entire page */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('space-soldier-ai-wallpaper-4k.png') center/cover no-repeat fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Create a wrapper to structure the content */
+.wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Make sections semi-transparent */
+section {
+    background: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    backdrop-filter: blur(10px); /* Smooth effect */
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Make text inside sections bold & professional */
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(255, 165, 0, 0.9);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 10px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+}
