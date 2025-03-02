@@ -1,3 +1,50 @@
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".mobile-icons a");
+
+    // Function to update active state
+    function updateActiveLink(targetId) {
+        navLinks.forEach((link) => link.style.color = "rgb(161, 161, 161)");
+
+        let activeLink = document.querySelector(`.mobile-icons a[href="#${targetId}"]`);
+        if (activeLink) {
+            activeLink.style.color = "orange";
+        }
+    }
+
+    // Intersection Observer to detect scrolling
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    updateActiveLink(entry.target.id);
+                }
+            });
+        },
+        { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Smooth scroll on icon click + ensure orange is set
+    navLinks.forEach((link) => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: "smooth" });
+
+                // Small delay to update color after scrolling
+                setTimeout(() => updateActiveLink(targetId), 500);
+            }
+        });
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const menuIcon = document.querySelector(".menu-icon");
     const nav = document.querySelector("nav");
@@ -32,44 +79,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-document.addEventListener("DOMContentLoaded", function () {
-    const screenshots = [
-        "Smart/Screenshot 2024-12-30 224237.png",
-        "Smart/Screenshot 2024-12-30 224312.png",
-        "Smart/Screenshot 2024-12-30 225948.png",
-        "Smart/Screenshot 2024-12-30 230003.png",
-        "Smart/Screenshot 2024-12-30 230041.png",
-        "Smart/Screenshot 2024-12-30 230100.png",
-        "Smart/Screenshot 2024-12-30 230652.png",
-        "Smart/Screenshot 2024-12-30 230732.png",
-        "",
-        
-    ];
 
-    const diagrams = [
-        "images/project1/database_diagram.png",
-        "images/project1/system_architecture.png",
-        "images/project1/use_case_diagram.png"
-    ];
-
-    const screenshotContainer = document.getElementById("screenshots");
-    screenshots.forEach(src => {
-        let img = document.createElement("img");
-        img.src = src;
-        img.alt = "Project Screenshot";
-        screenshotContainer.appendChild(img);
-    });
-
-    const diagramContainer = document.getElementById("diagrams");
-    diagrams.forEach(src => {
-        let img = document.createElement("img");
-        img.src = src;
-        img.alt = "Project Diagram";
-        diagramContainer.appendChild(img);
-    });
-});
-
-// Back Button Function
-function goBack() {
-    window.history.back();
-}
