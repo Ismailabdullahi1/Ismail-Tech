@@ -20,7 +20,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     position: fixed;
     top: 0;
     left: 0;
@@ -36,7 +36,7 @@ header {
     color: orange;
 }
 .logo span {
-    color: rgb(14, 14, 139);
+    color: rgb(73, 73, 231);
 }
 
 /* Navigation Menu (Centered) */
@@ -980,4 +980,148 @@ section {
     section {
         padding: 20px;
     }
+}
+.certification-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.certification-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.certification-card {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.certification-card:hover {
+    transform: scale(1.05);
+}
+
+.certification-card img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.certification-card h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.certification-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    color: white;
+}
+
+.certification-card ul li {
+    font-size: 0.9rem;
+    padding: 5px 0;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: orange;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: darkorange;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .certification-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .certification-card {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+.project-details {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.back-btn {
+    background: #ff5a5f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background: #e0484e;
+}
+
+h1, h2 {
+    color: #f7c08a;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.image-grid img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px;
+    font-size: 18px;
+}
+
+ul li i {
+    color: #ffcc00;
+    margin-right: 5px;
 }
