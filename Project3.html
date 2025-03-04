@@ -14,17 +14,17 @@
         <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Projects</button>
         
         <div class="project-header">
-            <h1 id="project-title">Employee Medical Leave System</h1>
-            <p id="project-description">A secure and automated leave management system for medical staff, enabling efficient leave applications, approvals, and tracking. Features a centralized database for secure record management, ensuring accuracy, transparency, and streamlined workflow.</p>
+            <h1 id="project-title">F.R.I.E.N.D.S - Social Connection Manager</h1>
+            <p id="project-description">F.R.I.E.N.D.S is a web and mobile application built using ASP.NET Core MVC, SQL Server, and MUI for .NET. It helps users efficiently manage, organize, and analyze their social connections. The app features a clean and user-friendly interface for tasks like friend categorization, meeting scheduling, and social data visualization, making relationship management effortless.</p>
         </div>
 
         <!-- Features & Work Done -->
         <div class="project-info">
             <h2>What I Did</h2>
             <ul id="project-tasks">
-                <li><i class="fas fa-check-circle"></i>Automated Leave Application</li>
-                <li><i class="fas fa-check-circle"></i> Real-time Leave Approval </li>
-                <li><i class="fas fa-check-circle"></i> Leave Tracking & History</li>
+                <li><i class="fas fa-check-circle"></i> Friend Categorization</li>
+                <li><i class="fas fa-check-circle"></i> Meeting Scheduling</li>
+                <li><i class="fas fa-check-circle"></i>Social Data Visualization</li>
               
             </ul>
         </div>
@@ -34,7 +34,11 @@
     <div class="tech-grid">
         <div class="tech-item">
             <h3><i class="fas fa-code"></i> Programming</h3>
-            <span>HTML</span> <span>CSS</span> <span>JavaScript</span> <span>PHP</span> <span>MySql</span>
+            <span>HTML</span> <span>CSS</span> <span>JavaScript</span><span>C#</span> <span>SQL Server</span>
+        </div>
+        <div class="tech-item">
+            <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
+            <span>ASP.NET Core MVC</span>
         </div>
         
      
@@ -49,10 +53,7 @@
 </div>
 
 <!-- Diagrams -->
-<div class="project-diagrams">
-    <h2>Project Diagrams</h2>
-    <div class="image-grid" id="diagrams"></div>
-</div>
+
 
         <!-- Full-screen Image Modal -->
 <!-- Full-screen Image Modal -->
@@ -85,30 +86,21 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const images = [
-        "Smart/Screenshot 2024-12-30 224237.png",
-        "Smart/Screenshot 2024-12-30 224312.png",
-        "Smart/Screenshot 2024-12-30 225948.png",
-        "Smart/Screenshot 2024-12-30 230003.png",
-        "Smart/1.png",
-        "Smart/2.png",
-        "Smart/3.png",
-        "Smart/4.png",
-        "Smart/5.png",
-        "Smart/6.png",
-        "Smart/7.png",
-        "Smart/8.png",
+        "NET/01.png",
+        "NET/02.png",
+        "NET/03.png",
+        "NET/04.png",
+        "NET/05.png",
+        "NET/06.png",
+        "NET/07.png",
+        "NET/08.png",
+        "NET/09.png",
+        "NET/010.png",
+        "NET/011.png",
     ];
 
     const diagrams = [
-        "Smart/_System Architecture Diagram.drawio (2).png",
-        "Smart/Class diagram.drawio.png",
-        "Smart/Use Case Diagram for Smart Parking System.drawio.png",
-        "Smart/User Activity Diagram .drawio.png",
-        "Smart/Car Plate Scanning at Parked Location Sequence Diagram.drawio.png",
-        "Smart/Car Search Sequence Diagram.drawio.png",
-        "Smart/Parking Availability Sequence Diagram.drawio.png",
-        "Smart/Pay Parking Sequence Diagram .drawio.png",
-        "Smart/Admin Login Sequence Diagram.png",
+       
     ];
 
     let currentIndex = 0; // Track current image index
