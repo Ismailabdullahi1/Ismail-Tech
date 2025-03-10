@@ -3,15 +3,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".mobile-icons a");
 
-    // Function to update active state
-    function updateActiveLink(targetId) {
-        navLinks.forEach((link) => link.style.color = "rgb(161, 161, 161)");
+    function updateActiveLink() {
+        let scrollPos = window.scrollY + window.innerHeight / 2;
 
-        let activeLink = document.querySelector(`.mobile-icons a[href="#${targetId}"]`);
-        if (activeLink) {
-            activeLink.style.color = "orange";
-        }
+        sections.forEach((section) => {
+            if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                const id = section.getAttribute("id");
+                navLinks.forEach((link) => link.style.color = "rgb(161, 161, 161)");
+
+                let activeLink = document.querySelector(`.mobile-icons a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.style.color = "orange";
+                }
+            }
+        });
     }
+
+    updateActiveLink(); // Initial load
+    window.addEventListener("scroll", updateActiveLink);
+});
+
 
     // Intersection Observer to detect scrolling
     const observer = new IntersectionObserver(
@@ -42,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-});
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
