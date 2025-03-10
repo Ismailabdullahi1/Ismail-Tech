@@ -357,10 +357,10 @@ header {
 
 /* University Logo */
 .university-logo {
-    width: 150px;
+    width: 250px;
     height: auto;
-    border-radius: 10px;
-    margin-right: 20px;
+    
+   
 }
 
 /* Education Details */
