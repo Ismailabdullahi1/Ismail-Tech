@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details | ISM TECH </title>
     <link rel="stylesheet" href="styles.css">
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -55,28 +55,58 @@
         </div>
     </div>
 </div>
-
+<br>
 
         <!-- Project Screenshots -->
         <div class="project-gallery">
     <h2>Project Screenshots</h2>
-    <div class="image-grid" id="screenshots"></div>
+    <br>
+   <div class="image-grid">
+ <img src="Smart/1.png" alt="Image 1" onclick="openModal(0)">
+ <img src="Smart/2.png" alt="Image 2" onclick="openModal(1)">
+ <img src="Smart/3.png" alt="Image 3" onclick="openModal(2)">
+    <img src="Smart/4.png" alt="Image 4" onclick="openModal(3)">
+    <img src="Smart/5.png" alt="Image 5" onclick="openModal(4)">
+    <img src="Smart/6.png" alt="Image 6" onclick="openModal(5)">
+    <img src="Smart/7.png" alt="Image 7" onclick="openModal(6)">
+    <img src="Smart/8.png" alt="Image 8" onclick="openModal(7)">
+    <img src="Smart/9.png" alt="Image 9" onclick="openModal(8)">
+    <img src="Smart/10.png" alt="Image 10" onclick="openModal(9)">
+    <img src="Smart/11.png" alt="Image 11" onclick="openModal(10)">
+    <img src="Smart/12.png" alt="Image 12" onclick="openModal(11)">
+    <img src="Smart/13.png" alt="Image 13" onclick="openModal(12)">
+    <img src="Smart/14.png" alt="Image 14" onclick="openModal(13)">
+    <img src="Smart/15.png" alt="Image 15" onclick="openModal(14)">
+    <img src="Smart/16.png" alt="Image 16" onclick="openModal(15)">
+    <img src="Smart/17.png" alt="Image 17" onclick="openModal(16)">
+    <img src="Smart/18.png" alt="Image 18" onclick="openModal(17)">
+    <img src="Smart/19.png" alt="Image 19" onclick="openModal(18)">
+    <img src="Smart/20.png" alt="Image 20" onclick="openModal(19)">
+    <img src="Smart/21.png" alt="Image 21" onclick="openModal(20)">
+    <img src="Smart/22.png" alt="Image 22" onclick="openModal(21)">
+    <img src="Smart/23.png" alt="Image 23" onclick="openModal(22)">
+
+    <img src="Smart/24.png" alt="Image 24" onclick="openModal(23)">
+    <img src="Smart/25.png" alt="Image 25" onclick="openModal(24)">
+    <img src="Smart/26.png" alt="Image 26" onclick="openModal(25)">
+    <img src="Smart/27.png" alt="Image 27" onclick="openModal(26)">
+    <img src="Smart/28.png" alt="Image 28" onclick="openModal(27)">
+    <img src="Smart/29.png" alt="Image 29" onclick="openModal(28)">
+    <img src="Smart/30.png" alt="Image 30" onclick="openModal(29)">
+    <img src="Smart/31.png" alt="Image 31" onclick="openModal(30)">
+    <img src="Smart/32.png" alt="Image 32" onclick="openModal(31)">
+    <img src="Smart/33.png" alt="Image 33" onclick="openModal(32)">
+    <img src="Smart/34.png" alt="Image 34" onclick="openModal(33)">
+    <img src="Smart/35.png" alt="Image 35" onclick="openModal(34)">
+
+<!-- Add more images as needed -->
 </div>
 
-<!-- Diagrams -->
-<div class="project-diagrams">
-    <h2>Project Diagrams</h2>
-    <div class="image-grid" id="diagrams"></div>
-</div>
-
-        <!-- Full-screen Image Modal -->
-<!-- Full-screen Image Modal -->
-<!-- Image Modal -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modal-img" class="modal-content">
-    <button class="prev" onclick="prevImage()">&#10094;</button>
-    <button class="next" onclick="nextImage()">&#10095;</button>
+<div class="image-modal" id="imageModal">
+<span class="close" onclick="closeModal()">&times;</span>
+ <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+<img id="modalImage" src="" alt="Full Image">
+ <span class="next" onclick="changeSlide(1)">&#10095;</span>
 </div>
 
 
@@ -98,109 +128,29 @@
         </div>
     </footer>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const images = [
-        "Smart/Screenshot 2024-12-30 224237.png",
-        "Smart/Screenshot 2024-12-30 224312.png",
-        "Smart/Screenshot 2024-12-30 225948.png",
-        "Smart/Screenshot 2024-12-30 230003.png",
-        "Smart/1.png",
-        "Smart/2.png",
-        "Smart/3.png",
-        "Smart/4.png",
-        "Smart/5.png",
-        "Smart/6.png",
-        "Smart/7.png",
-        "Smart/8.png",
-    ];
+ const images = document.querySelectorAll('.image-grid img');
+ const modal = document.getElementById('imageModal');
+ const modalImg = document.getElementById('modalImage');
+ let currentIndex = 0;
 
-    const diagrams = [
-        "Smart/_System Architecture Diagram.drawio (2).png",
-        "Smart/Class diagram.drawio.png",
-        "Smart/Use Case Diagram for Smart Parking System.drawio.png",
-        "Smart/User Activity Diagram .drawio.png",
-        "Smart/Car Plate Scanning at Parked Location Sequence Diagram.drawio.png",
-        "Smart/Car Search Sequence Diagram.drawio.png",
-        "Smart/Parking Availability Sequence Diagram.drawio.png",
-        "Smart/Pay Parking Sequence Diagram .drawio.png",
-        "Smart/Admin Login Sequence Diagram.png",
-    ];
+ function openModal(index) {
+ currentIndex = index;
+ modal.style.display = 'flex';
+ modalImg.src = images[currentIndex].src;
+}
 
-    let currentIndex = 0; // Track current image index
-    const allImages = [...images, ...diagrams]; // Combine screenshots & diagrams into one array
-
-    const screenshotContainer = document.getElementById("screenshots");
-    const diagramContainer = document.getElementById("diagrams");
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modal-img");
-
-    function createImageElement(src, index) {
-        let img = document.createElement("img");
-        img.src = src;
-        img.alt = "Project Image";
-        img.classList.add("clickable-image"); // Add class for styling
-        img.onclick = () => openModal(index); // Click event to open modal
-        return img;
-    }
-
-    // Append screenshots to #screenshots
-    images.forEach((src, index) => {
-        screenshotContainer.appendChild(createImageElement(src, index));
-    });
-
-    // Append diagrams to #diagrams
-    diagrams.forEach((src, index) => {
-        diagramContainer.appendChild(createImageElement(src, images.length + index));
-    });
-
-    // Open modal and display the clicked image
-    function openModal(index) {
-        currentIndex = index;
-        modalImg.src = allImages[currentIndex];
-        modal.style.display = "flex";
-    }
-
-    // Close the modal
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    // Navigate images (Next)
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % allImages.length;
-        modalImg.src = allImages[currentIndex];
-    }
-
-    // Navigate images (Previous)
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-        modalImg.src = allImages[currentIndex];
-    }
-
-    // Event Listener for Keyboard Navigation
-    document.addEventListener("keydown", function (event) {
-        if (modal.style.display === "flex") {
-            if (event.key === "ArrowRight") nextImage();  // Right Arrow → Next
-            if (event.key === "ArrowLeft") prevImage();   // Left Arrow ← Previous
-            if (event.key === "Escape") closeModal();     // Esc → Close
-        }
-    });
-
-    // Back Button Function
-    function goBack() {
-        window.history.back();
-    }
-
-    // Attach functions to global scope
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-    window.goBack = goBack;
-    window.nextImage = nextImage;
-    window.prevImage = prevImage;
-});
-
-
-
+ function closeModal() {
+ modal.style.display = 'none'; }
+ function changeSlide(direction) {
+ currentIndex += direction;
+ if (currentIndex < 0) currentIndex = images.length - 1;
+ if (currentIndex >= images.length) currentIndex = 0;
+  modalImg.src = images[currentIndex].src;
+}
+ // Optional: Close modal with Esc key
+ document.addEventListener('keydown', (e) => {
+ if (e.key === 'Escape') closeModal(); });
 </script>
+
 </body>
 </html>
