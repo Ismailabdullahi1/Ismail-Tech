@@ -1085,75 +1085,81 @@ section {
 h1, h2 {
     color: #f7c08a;
 }
+/* Grid Layout for Images */
 .image-grid {
- display: flex;
-flex-wrap: wrap;
-justify-content: center;
- gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 .image-grid img {
- width: 200px;
- height: auto;
- border-radius: 8px;
- box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
- cursor: pointer;
-transition: transform 0.3s ease;
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .image-grid img:hover {
- transform: scale(1.05);
+  transform: scale(1.05);
 }
 
+/* Modal Styles */
 .image-modal {
- display: none;
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- background-color: rgba(0, 0, 0, 0.9);
- justify-content: center;
-align-items: center;
- z-index: 1000; 
-flex-direction: column;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  flex-direction: column;
+  transition: all 0.3s ease;
 }
 
+/* Image in Modal */
 .image-modal img {
- max-width: 90%;
- max-height: 90%;
- border-radius: 10px;
- margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Ensures the image fits inside the modal */
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+  transition: transform 0.3s ease;
 }
 
-.image-modal .close {
- position: absolute;
- top: 20px;
- right: 30px;
- font-size: 35px;
- color: white;
- cursor: pointer;
-}
-
+/* Navigation Arrows */
 .image-modal .prev,
 .image-modal .next {
- position: absolute;
- top: 50%;
- transform: translateY(-50%);
- font-size: 40px;
- background: rgba(0, 0, 0, 0.5);
- color: white; padding: 12px;
- cursor: pointer;
- border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
 .image-modal .prev:hover,
 .image-modal .next:hover {
- background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.image-modal .prev { left: 30px; }
-.image-modal .next { right: 30px; }
+.image-modal .prev {
+  left: 20px;
+}
+
+.image-modal .next {
+  right: 20px;
+}
 
 .technologies {
     background: linear-gradient(135deg, orange, rgb(14, 14, 139));
