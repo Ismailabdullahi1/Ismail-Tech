@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details | ISM TECH </title>
     <link rel="stylesheet" href="styles.css">
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -43,13 +43,37 @@
      
     </div>
 </div>
-
+<br>
 
         <!-- Project Screenshots -->
         <div class="project-gallery">
     <h2>Project Screenshots</h2>
-    <div class="image-grid" id="screenshots"></div>
+    <br>
+   <div class="image-grid">
+ <img src="Truck/1.png" alt="Image 1" onclick="openModal(0)">
+   
+    <img src="Truck/3.png" alt="Image 3" onclick="openModal(2)">
+    <img src="Truck/4.png" alt="Image 4" onclick="openModal(3)">
+    <img src="Truck/5.png" alt="Image 5" onclick="openModal(4)">
+    <img src="Truck/6.png" alt="Image 6" onclick="openModal(5)">
+    <img src="Truck/7.png" alt="Image 7" onclick="openModal(6)">
+    <img src="Truck/8.png" alt="Image 8" onclick="openModal(7)">
+    <img src="Truck/9.png" alt="Image 9" onclick="openModal(8)">
+    <img src="Truck/10.png" alt="Image 10" onclick="openModal(9)">
+    <img src="Truck/11.png" alt="Image 11" onclick="openModal(10)">
+    <img src="Truck/12.png" alt="Image 12" onclick="openModal(11)">
+    <img src="Truck/13.png" alt="Image 13" onclick="openModal(12)">
+    <img src="Truck/14.png" alt="Image 14" onclick="openModal(13)">
+    <img src="Truck/15.png" alt="Image 15" onclick="openModal(14)">
+    <img src="Truck/16.png" alt="Image 16" onclick="openModal(15)">
+ 
 </div>
+<div class="image-modal" id="imageModal">
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <img id="modalImage" src="" alt="Full Image">
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+</div>
+
 <div class="see-more-container">
     <a href="https://github.com/Ismailabdullahi1/Truck_Office_System" target="_blank" class="github-button">
         <i class="fab fa-github"></i> See In GitHub
@@ -58,15 +82,7 @@
 <!-- Diagrams -->
 
 
-        <!-- Full-screen Image Modal -->
-<!-- Full-screen Image Modal -->
-<!-- Image Modal -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modal-img" class="modal-content">
-    <button class="prev" onclick="prevImage()">&#10094;</button>
-    <button class="next" onclick="nextImage()">&#10095;</button>
-</div>
+
 
 
     </section>
@@ -87,103 +103,63 @@
         </div>
     </footer>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const images = [
-        "Truck/22.png",
-        "Truck/11.png",
-        "Truck/33.png",
-        "Truck/44.png",
-        "Truck/55.png",
-        "Truck/66.png",
-        "Truck/77.png",
-        "Truck/88.png",
-        "Truck/99.png",
-        "Truck/101.png",
-        "Truck/102.png",
-        "Truck/103.png",
-        "Truck/104.png",
-        "Truck/105.png",
-        "Truck/106.png",
-    
-    ];
+const images = document.querySelectorAll('.image-grid img');
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+let currentIndex = 0;
 
-    const diagrams = [
-        
-    ];
+// Show modal and image
+function openModal(index) {
+  const image = images[index];
+  currentIndex = index;
+  const rect = image.getBoundingClientRect(); // Get the position of the clicked image
 
-    let currentIndex = 0; // Track current image index
-    const allImages = [...images, ...diagrams]; // Combine screenshots & diagrams into one array
+  // Set the modal's initial position to the clicked image's position
+  modal.style.left = `${rect.left + window.scrollX}px`;
+  modal.style.top = `${rect.top + window.scrollY}px`;
+  modal.style.width = `${rect.width}px`;
+  modal.style.height = `${rect.height}px`;
 
-    const screenshotContainer = document.getElementById("screenshots");
-    const diagramContainer = document.getElementById("diagrams");
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modal-img");
+  // Display the modal and set the image
+  modal.style.display = 'flex';
+  modalImg.src = image.src;
 
-    function createImageElement(src, index) {
-        let img = document.createElement("img");
-        img.src = src;
-        img.alt = "Project Image";
-        img.classList.add("clickable-image"); // Add class for styling
-        img.onclick = () => openModal(index); // Click event to open modal
-        return img;
-    }
+  // Wait for the modal to be displayed, then animate it to take full size
+  setTimeout(() => {
+    modal.style.left = '0'; // Move modal to the center of the screen
+    modal.style.top = '0';
+    modal.style.width = '100%'; // Expand to full width and height
+    modal.style.height = '100%';
+  }, 50);
+}
 
-    // Append screenshots to #screenshots
-    images.forEach((src, index) => {
-        screenshotContainer.appendChild(createImageElement(src, index));
-    });
+// Hide modal
+function closeModal() {
+  modal.style.display = 'none';
+}
 
-    // Append diagrams to #diagrams
-    diagrams.forEach((src, index) => {
-        diagramContainer.appendChild(createImageElement(src, images.length + index));
-    });
+// Change image
+function changeSlide(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = images.length - 1;
+  if (currentIndex >= images.length) currentIndex = 0;
+  modalImg.src = images[currentIndex].src;
+}
 
-    // Open modal and display the clicked image
-    function openModal(index) {
-        currentIndex = index;
-        modalImg.src = allImages[currentIndex];
-        modal.style.display = "flex";
-    }
-
-    // Close the modal
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    // Navigate images (Next)
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % allImages.length;
-        modalImg.src = allImages[currentIndex];
-    }
-
-    // Navigate images (Previous)
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-        modalImg.src = allImages[currentIndex];
-    }
-
-    // Event Listener for Keyboard Navigation
-    document.addEventListener("keydown", function (event) {
-        if (modal.style.display === "flex") {
-            if (event.key === "ArrowRight") nextImage();  // Right Arrow → Next
-            if (event.key === "ArrowLeft") prevImage();   // Left Arrow ← Previous
-            if (event.key === "Escape") closeModal();     // Esc → Close
-        }
-    });
-
-    // Back Button Function
-    function goBack() {
-        window.history.back();
-    }
-
-    // Attach functions to global scope
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-    window.goBack = goBack;
-    window.nextImage = nextImage;
-    window.prevImage = prevImage;
+// Esc to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
 });
 
+// Click outside the image to close
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Add click event to all images
+images.forEach((img, index) => {
+  img.addEventListener('click', () => openModal(index));
+});
 
 
 </script>
